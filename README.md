@@ -27,17 +27,18 @@ Backend serverless para la gestión de un e-commerce, desarrollado con Node.js, 
 - Serverless Framework v4 (`npm install -g serverless`)
 - Cuenta AWS y credenciales configuradas (`aws configure`)
 - PostgreSQL (local o en la nube)
+- bun (recomendado) o npm o pnpm
 
 ## Instalación
 ```bash
-git clone https://github.com/tu-org/tu-repo.git
-cd tu-repo
+git clone https://github.com/aragi-dev/shopia-back
+cd shopia-back
 bun install
 ```
 
 ## Configuración Serverless
 - `frameworkVersion: '4'` en `serverless.ts`.
-- Uso de `stages` para ambientes (`dev`, `prod`).
+- Uso de `stages` para ambientes (`dev`,`qa`prod`).
 - Plugins recomendados: `serverless-offline`, `serverless-iam-roles-per-function`.
 
 ## Uso
@@ -77,7 +78,7 @@ Esta estructura facilita la escalabilidad, el mantenimiento y la separación de 
 1. Haz fork del repo
 2. Crea una rama (`feature/nueva-funcionalidad`)
 3. Haz un PR
-4. Sigue los estándares de lint y pre-commit
+4. Sigue los estándares de conmicional-comits
 5. Reporta issues en GitHub
 
 ## Importante
@@ -88,7 +89,7 @@ Actualmente el proyecto presenta dos advertencias/fixes temporales:
 
 1. **Fix temporal para ErrorOptions en inversifyjs**
    - Archivo: `types/inversify-fix.d.ts`
-   - Motivo: Soluciona un error de tipos relacionado con `ErrorOptions` en la librería `inversifyjs/container`.
+   - Motivo: Soluciona un error de tipos relacionado con `ErrorOptions` en la librería `inversifyjs/container` la cual es un error interino de inversify.
    - **Este archivo debe eliminarse cuando el bug sea corregido oficialmente en la dependencia.**
 
 2. **Supresión de advertencias de Node.js**
@@ -99,5 +100,5 @@ Actualmente el proyecto presenta dos advertencias/fixes temporales:
      ```
    - **Nota:** Esta supresión solo oculta los mensajes en consola. Ya intentamos actualizar y revisar todas las dependencias, pero el warning proviene de una dependencia de bajo nivel que aún no lo ha corregido. Es recomendable revisar y corregir las advertencias en desarrollo cuando sea posible, ya que pueden indicar problemas de seguridad o compatibilidad futura. El uso de `NODE_NO_WARNINGS=1` es solo una solución temporal para mantener la consola limpia en ambientes de desarrollo o producción.
 
-## Licencia`
-MIT.
+## Licencia
+MIT
