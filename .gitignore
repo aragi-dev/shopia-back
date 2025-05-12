@@ -1,0 +1,16 @@
+node_modules
+.serverless
+dist/
+build/
+*.log
+.env
+.env.*
+.DS_Store
+*.local
+bun.lock
+*.tsbuildinfo
+coverage/
+*.swp
+*.swo
+npm-debug.log*
+yarn-debug.log*
