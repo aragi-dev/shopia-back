@@ -12,37 +12,37 @@ import LogUseCase from "@/utilities/logger/useCaseDecorator";
 
 @injectable()
 export default class CreateCategoryUseCase implements IUseCase<ICreateCategoryDTO, ResponseUseCase<Category>> {
-	@LogUseCase
-	async execute(data: ICreateCategoryDTO): Promise<ResponseUseCase<Category>> {
-		const db = await openConnection([Category]);
-		try {
-			const categoryRepository = new CategoryRepository(db.manager);
-			const existing = await categoryRepository.findByParam({
-				name: data.name,
-			});
-			if (existing.length > 0) {
-				Logger.warn(messages.log.DUPLICATE_ENTITY, existing[0]);
-				return {
-					statusCode: statusCodes.BAD_REQUEST,
-					data: existing[0],
-					message: messages.api.EXIST,
-				};
-			}
-			await db.startTransaction();
-			const category = await categoryRepository.createOne({ ...data });
-			Logger.info(messages.log.ENTITY_CREATED, category);
-			await db.commitTransaction();
-			return {
-				statusCode: statusCodes.SUCCESS,
-				data: category,
-				message: messages.api.SUCCESS,
-			};
-		} catch (error) {
-			Logger.error(messages.log.UNKNOWN_ERROR, error);
-			await db.rollbackTransaction();
-			throw new Error(messages.api.SERVER_ERROR);
-		} finally {
-			await closeConnection(db);
-		}
-	}
+    @LogUseCase
+    async execute(data: ICreateCategoryDTO): Promise<ResponseUseCase<Category>> {
+        const db = await openConnection([Category]);
+        try {
+            const categoryRepository = new CategoryRepository(db.manager);
+            const existing = await categoryRepository.findByParam({
+                name: data.name,
+            });
+            if (existing.length > 0) {
+                Logger.warn(messages.log.DUPLICATE_ENTITY, existing[0]);
+                return {
+                    statusCode: statusCodes.BAD_REQUEST,
+                    data: existing[0],
+                    message: messages.api.EXIST,
+                };
+            }
+            await db.startTransaction();
+            const category = await categoryRepository.createOne({ ...data });
+            Logger.info(messages.log.ENTITY_CREATED, category);
+            await db.commitTransaction();
+            return {
+                statusCode: statusCodes.SUCCESS,
+                data: category,
+                message: messages.api.SUCCESS,
+            };
+        } catch (error) {
+            Logger.error(messages.log.UNKNOWN_ERROR, error);
+            await db.rollbackTransaction();
+            throw new Error(messages.api.SERVER_ERROR);
+        } finally {
+            await closeConnection(db);
+        }
+    }
 }
