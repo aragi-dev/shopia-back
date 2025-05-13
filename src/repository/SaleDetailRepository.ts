@@ -1,35 +1,35 @@
 import type { DataSource, Repository } from "typeorm";
-import Product from "../entitys/Product";
+import SaleDetail from "../entitys/SaleDetail";
 import BaseRepository from "./base/BaseRepository";
 import LogRepository from "@/utilities/logger/repositoryDecorator";
 import type UUID from "@/utilities/types/uuid";
 
-export default class ProductRepository extends BaseRepository<Product> {
-  private ormRepository: Repository<Product>;
+export default class SaleDetailRepository extends BaseRepository<SaleDetail> {
+  private ormRepository: Repository<SaleDetail>;
 
   constructor(dataSource: DataSource) {
     super();
-    this.ormRepository = dataSource.getRepository(Product);
+    this.ormRepository = dataSource.getRepository(SaleDetail);
   }
 
   @LogRepository
-  async findAll(): Promise<Product[]> {
+  async findAll(): Promise<SaleDetail[]> {
     return this.ormRepository.find();
   }
 
   @LogRepository
-  async findById(id: UUID): Promise<Product | null> {
+  async findById(id: UUID): Promise<SaleDetail | null> {
     return this.ormRepository.findOne({ where: { id } }) ?? null;
   }
 
   @LogRepository
-  async create(data: Partial<Product>): Promise<Product> {
+  async create(data: Partial<SaleDetail>): Promise<SaleDetail> {
     const entity = this.ormRepository.create(data);
     return this.ormRepository.save(entity);
   }
 
   @LogRepository
-  async update(id: UUID, data: Partial<Product>): Promise<Product | null> {
+  async update(id: UUID, data: Partial<SaleDetail>): Promise<SaleDetail | null> {
     await this.ormRepository.update(id, data);
     return this.findById(id);
   }
@@ -39,10 +39,4 @@ export default class ProductRepository extends BaseRepository<Product> {
     const result = await this.ormRepository.delete(id);
     return result.affected !== 0;
   }
-
-  @LogRepository
-  async findByParam(params: Partial<Product>): Promise<Product[]> {
-    return this.ormRepository.find({ where: params });
-  }
-
 }

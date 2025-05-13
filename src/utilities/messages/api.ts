@@ -28,6 +28,7 @@ const apiValidation = {
   INVALID_PASSWORD: "Invalid password format.",
   REQUIRED_FIELD: "A required field is missing.",
   INVALID_UUID: "Invalid UUID format.",
+  NOT_MATCH: "Values do not match.",
 };
 
 const apiAuth = {
