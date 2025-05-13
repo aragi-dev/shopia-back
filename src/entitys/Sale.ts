@@ -1,26 +1,19 @@
-import { Entity, Column, CreateDateColumn, ManyToOne, JoinColumn } from "typeorm";
-import Register from "@/entitys/Register";
-import BaseEntity from "@/entitys/base/BaseEntity";
+import { Entity, Column, ManyToOne, JoinColumn } from "typeorm";
+import BaseEntity from "./base/BaseEntity";
+import User from "./User";
 
-@Entity({ schema: "sales", name: "sales" })
-class Sale extends BaseEntity {
-	@ManyToOne(() => Register)
-	@JoinColumn({ name: "register_id" })
-	register!: Register;
+@Entity("sale")
+export default class Sale extends BaseEntity {
+  @Column({ name: "user_id", type: "uuid", nullable: false })
+  user_id!: string;
 
-	@CreateDateColumn({ name: "sale_timestamp", type: "timestamptz" })
-	saleTimestamp!: Date;
+  @ManyToOne(() => User)
+  @JoinColumn({ name: "user_id" })
+  user!: User;
 
-	@Column("numeric", { precision: 12, scale: 2 })
-	subtotal!: number;
+  @Column({ name: "total", type: "numeric", precision: 10, scale: 2, nullable: false })
+  total!: number;
 
-	@Column("numeric", { precision: 12, scale: 2, default: 0 })
-	discountTotal!: number;
-
-	@Column("numeric", { precision: 12, scale: 2, default: 0 })
-	taxTotal!: number;
-
-	@Column("numeric", { precision: 12, scale: 2 })
-	total!: number;
+  @Column({ name: "status", type: "boolean", default: true, nullable: false })
+  status!: boolean;
 }
-export default Sale;

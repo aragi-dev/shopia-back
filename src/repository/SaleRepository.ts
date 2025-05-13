@@ -1,12 +1,42 @@
-import type UUID from '@/utilities/types/uuid';
-import type { DataSource } from 'typeorm';
-import Sale from '@/entitys/Sale';
-import BaseRepository from '@/repository/base/BaseRepository';
+import type { DataSource, Repository } from "typeorm";
+import Sale from "../entitys/Sale";
+import BaseRepository from "./base/BaseRepository";
+import LogRepository from "@/utilities/logger/repositoryDecorator";
+import type UUID from "@/utilities/types/uuid";
 
-class SaleRepository extends BaseRepository<Sale, UUID> {
+export default class SaleRepository extends BaseRepository<Sale> {
+  private ormRepository: Repository<Sale>;
+
   constructor(dataSource: DataSource) {
-    super(Sale, dataSource);
+    super();
+    this.ormRepository = dataSource.getRepository(Sale);
+  }
+
+  @LogRepository
+  async findAll(): Promise<Sale[]> {
+    return this.ormRepository.find();
+  }
+
+  @LogRepository
+  async findById(id: UUID): Promise<Sale | null> {
+    return this.ormRepository.findOne({ where: { id } }) ?? null;
+  }
+
+  @LogRepository
+  async create(data: Partial<Sale>): Promise<Sale> {
+    const entity = this.ormRepository.create(data);
+    return this.ormRepository.save(entity);
+  }
+
+  @LogRepository
+  async update(id: UUID, data: Partial<Sale>): Promise<Sale | null> {
+    await this.ormRepository.update(id, data);
+    return this.findById(id);
+  }
+
+  @LogRepository
+  async delete(id: UUID): Promise<boolean> {
+    const result = await this.ormRepository.delete(id);
+    return result.affected !== 0;
   }
 }
-
-export default SaleRepository;

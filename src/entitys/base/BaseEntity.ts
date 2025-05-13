@@ -1,13 +1,15 @@
-import { PrimaryGeneratedColumn, CreateDateColumn, Column } from "typeorm";
-import type UUID from "@/utilities/types/uuid";
+import { PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, Column } from "typeorm";
 
 export default abstract class BaseEntity {
-	@PrimaryGeneratedColumn("uuid")
-	id!: UUID;
+  @PrimaryGeneratedColumn("uuid")
+  id!: string;
 
-	@CreateDateColumn({ name: "created_at", type: "timestamptz" })
-	createdAt!: Date;
+  @Column({ type: "boolean", default: true })
+  status!: boolean;
 
-	@Column("boolean", { default: true })
-	active!: boolean;
+  @CreateDateColumn({ type: "timestamp", name: "created_at" })
+  created_at!: Date;
+
+  @UpdateDateColumn({ type: "timestamp", name: "updated_at" })
+  updated_at!: Date;
 }

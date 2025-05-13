@@ -1,27 +1,23 @@
-import { Entity, Column, ManyToOne, JoinColumn } from "typeorm";
-import Category from "@/entitys/Category";
-import BaseEntity from "@/entitys/base/BaseEntity";
+import { Entity, Column } from "typeorm";
+import BaseEntity from "./base/BaseEntity";
 
-@Entity({ schema: "sales", name: "products" })
-class Product extends BaseEntity {
-	@ManyToOne(() => Category)
-	@JoinColumn({ name: "category_id" })
-	category!: Category;
+@Entity("product")
+export default class Product extends BaseEntity {
+  @Column({ name: "code", type: "varchar", length: 50, unique: true, nullable: false })
+  code!: string;
 
-	@Column("text", { unique: true })
-	sku!: string;
+  @Column({ name: "name", type: "varchar", length: 255, nullable: false })
+  name!: string;
 
-	@Column("text")
-	name!: string;
+  @Column({ name: "description", type: "text", nullable: true })
+  description?: string;
 
-	@Column("text", { nullable: true })
-	description?: string;
+  @Column({ name: "purchase_price", type: "numeric", precision: 10, scale: 2, nullable: false })
+  purchase_price!: number;
 
-	@Column("numeric", { precision: 10, scale: 2 })
-	price!: number;
+  @Column({ name: "price", type: "numeric", precision: 10, scale: 2, nullable: false })
+  price!: number;
 
-	@Column("numeric", { precision: 10, scale: 2 })
-	cost!: number;
+  @Column({ name: "stock", type: "int", nullable: false })
+  stock!: number;
 }
-
-export default Product;
