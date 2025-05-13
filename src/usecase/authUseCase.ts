@@ -1,7 +1,7 @@
 import { injectable } from "inversify";
 import type IUseCase from "@/interfaces/IUseCase";
 import type ResponseUseCase from "@/utilities/responseUseCase";
-import type UserRepository from "@/repository/UserRepository";
+import UserRepository from "@/repository/UserRepository";
 import statusCodes from "@/utilities/statusCodes";
 import messages from "@/utilities/messages";
 import Logger from "@/utilities/logger/logger";
@@ -9,21 +9,19 @@ import LogUseCase from "@/utilities/logger/useCaseDecorator";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import type { IAuthUseCaseResponse, IAuthUseCaseRequest } from "@/interfaces/IAuthUseCase";
+import { closeConnection, openConnection } from "@/utilities/shopiaDB";
+import User from "@/entitys/User";
 
 const JWT_SECRET = process.env.JWT_SECRET || "secret";
 
 @injectable()
 export default class AuthUseCase implements IUseCase<IAuthUseCaseRequest, ResponseUseCase<IAuthUseCaseResponse>> {
-  private userRepository: UserRepository;
-
-  constructor(userRepository: UserRepository) {
-    this.userRepository = userRepository;
-  }
-
   @LogUseCase
   async execute(data: IAuthUseCaseRequest): Promise<ResponseUseCase<IAuthUseCaseResponse>> {
+    const db = await openConnection([User]);
     try {
-      const user = await this.userRepository.findOneByParam({ email: data.email });
+      const userRepository = new UserRepository(db.connection);
+      const user = await userRepository.findOneByParam({ email: data.email });
       if (!user || !user.status) {
         Logger.warn(messages.log.UNKNOWN_ERROR, data.email);
         return {
@@ -57,6 +55,8 @@ export default class AuthUseCase implements IUseCase<IAuthUseCaseRequest, Respon
     } catch (error) {
       Logger.error(messages.log.UNKNOWN_ERROR, error);
       throw new Error(messages.api.SERVER_ERROR);
+    } finally {
+      await closeConnection(db);
     }
   }
 }

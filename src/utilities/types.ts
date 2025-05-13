@@ -6,4 +6,5 @@ export const TYPES = {
   getProductsByIdUseCase: Symbol.for('getProductsByIdUseCase'),
   createProductUseCase : Symbol.for('createProductUseCase'),
   AuthUseCase: Symbol.for('AuthUseCase'),
+  CreateUserUseCase: Symbol.for('CreateUserUseCase'),
 };

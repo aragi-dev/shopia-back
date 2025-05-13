@@ -11,6 +11,14 @@ export interface Endpoint {
 
 export const services: Endpoint[] = [
   {
+    "name": "user-create",
+    "handler": "service/createUser/handler.handler",
+    "path": "user/create",
+    "method": "post",
+    "cors": true,
+    "timeout": 10
+  },
+  {
     "name": "product-get-by-id",
     "handler": "service/getProductsById/handler.handler",
     "path": "products/{id}",
