@@ -24,7 +24,7 @@
 		"@": "dist/src"
 	},
 	"scripts": {
-		"dev": "bun run generate-endpoints.js && NODE_NO_WARNINGS=1 serverless offline",
+		"dev": "bun run generate-endpoints.ts && NODE_NO_WARNINGS=1 serverless offline",
 		"format": "bunx biome format . --write",
 		"lint": "bunx biome check ."
 	}
