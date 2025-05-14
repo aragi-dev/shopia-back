@@ -19,6 +19,14 @@ export const services: Endpoint[] = [
     "timeout": 10
   },
   {
+    "name": "product-create",
+    "handler": "service/createProduct/handler.handler",
+    "path": "product",
+    "method": "post",
+    "cors": true,
+    "timeout": 10
+  },
+  {
     "name": "auth-login",
     "handler": "service/auth/handler.handler",
     "path": "/login",
@@ -31,14 +39,6 @@ export const services: Endpoint[] = [
     "handler": "service/getProducts/handler.handler",
     "path": "product",
     "method": "get",
-    "cors": true,
-    "timeout": 10
-  },
-  {
-    "name": "product-create",
-    "handler": "service/createProduct/handler.handler",
-    "path": "product",
-    "method": "post",
     "cors": true,
     "timeout": 10
   },
