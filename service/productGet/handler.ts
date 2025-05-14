@@ -14,7 +14,6 @@ import type IUseCase from "@/interfaces/IUseCase";
 import type ResponseUseCase from "@/utilities/responseUseCase";
 import type IGetProductUseCase from "@/interfaces/IGetProductUseCase";
 import schema from "./schema";
-import type UUID from "@/utilities/types/uuid";
 
 const baseHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   try {
@@ -28,7 +27,7 @@ const baseHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxy
       });
     }
     const useCase: IUseCase<IGetProductUseCase, ResponseUseCase<Product>> = container.get(GetProductsByIdUseCase);
-    const result = await useCase.execute({ id: parsed.data.id as UUID });
+    const result = await useCase.execute({ code: parsed.data.code });
     return response({
       statusCode: result.statusCode,
       message: result.message,

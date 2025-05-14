@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const schema = z.object({
-  id: z.string().uuid(),
+  code: z.string(),
 });
 
 export default schema;

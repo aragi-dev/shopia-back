@@ -17,7 +17,7 @@ export default class GetProductsByIdUseCase implements IUseCase<IGetProductUseCa
     const db = await openConnection([Product]);
     try {
       const productRepository = new ProductRepository(db.connection);
-      const product = await productRepository.findById(data.id);
+      const product = await productRepository.findByCode(data.code);
       if (!product) {
         return {
           statusCode: statusCodes.NOT_FOUND,
