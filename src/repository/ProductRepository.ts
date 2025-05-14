@@ -44,5 +44,4 @@ export default class ProductRepository extends BaseRepository<Product> {
   async findByParam(params: Partial<Product>): Promise<Product[]> {
     return this.ormRepository.find({ where: params });
   }
-
 }

@@ -21,4 +21,4 @@ const statusCodes = {
   GATEWAY_TIMEOUT: 504,
 };
 
-export default statusCodes
+export default statusCodes;
