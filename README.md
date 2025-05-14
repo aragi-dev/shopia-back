@@ -1,3 +1,6 @@
+
+#Este proyecto es desarrollado con la finalidad de  aprender a programar con el framework serverlesby lambdas
+
 # Shopia Backend - E-commerce API (Serverless)
 
 Backend serverless para la gestión de un e-commerce, desarrollado con Node.js, TypeScript y Serverless Framework v4. Provee endpoints para la administración de categorías, productos, ventas y más, desplegado en AWS Lambda y PostgreSQL.
