@@ -8,7 +8,7 @@ const functionConfig = {
   events: [
     {
       http: {
-        path: "products",
+        path: "product",
         method: "get",
         cors: true,
       },

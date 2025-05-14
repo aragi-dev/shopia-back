@@ -8,7 +8,7 @@ const functionConfig = {
   events: [
     {
       http: {
-        path: "auth/login",
+        path: "/login",
         method: "post",
         cors: true,
       },

@@ -13,31 +13,7 @@ export const services: Endpoint[] = [
   {
     "name": "user-create",
     "handler": "service/createUser/handler.handler",
-    "path": "user/create",
-    "method": "post",
-    "cors": true,
-    "timeout": 10
-  },
-  {
-    "name": "product-get-by-id",
-    "handler": "service/getProductsById/handler.handler",
-    "path": "products/{id}",
-    "method": "get",
-    "cors": true,
-    "timeout": 10
-  },
-  {
-    "name": "product-get-list",
-    "handler": "service/getProducts/handler.handler",
-    "path": "products",
-    "method": "get",
-    "cors": true,
-    "timeout": 10
-  },
-  {
-    "name": "product-create",
-    "handler": "service/createProduct/handler.handler",
-    "path": "product/create",
+    "path": "/register",
     "method": "post",
     "cors": true,
     "timeout": 10
@@ -45,8 +21,32 @@ export const services: Endpoint[] = [
   {
     "name": "auth-login",
     "handler": "service/auth/handler.handler",
-    "path": "auth/login",
+    "path": "/login",
     "method": "post",
+    "cors": true,
+    "timeout": 10
+  },
+  {
+    "name": "product-get-list",
+    "handler": "service/getProducts/handler.handler",
+    "path": "product",
+    "method": "get",
+    "cors": true,
+    "timeout": 10
+  },
+  {
+    "name": "product-create",
+    "handler": "service/createProduct/handler.handler",
+    "path": "product",
+    "method": "post",
+    "cors": true,
+    "timeout": 10
+  },
+  {
+    "name": "product-get-by-id",
+    "handler": "service/getProductsById/handler.handler",
+    "path": "product/{id}",
+    "method": "get",
     "cors": true,
     "timeout": 10
   }
