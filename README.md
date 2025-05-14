@@ -1,5 +1,5 @@
 
-# Este proyecto es desarrollado con la única finalidad de aplicar conocimetos aprendidos y tener evidencia de estos.
+### Proyecto desarollado con la finalidad de enfrentarse a retos y mejorar como desarollador no hay un objetivo claro pero se intenta mejorar el disenio de la infrestuctura para mejorar la escalabilidad y un codigo mas legible y automatizar prosesos
 
 # Shopia Backend - E-commerce API (Serverless)
 
@@ -27,7 +27,7 @@ Backend serverless para la gestión de un e-commerce, desarrollado con Node.js, 
 
 ## Prerrequisitos
 - Node.js >= 20.x
-- Serverless Framework v4 (`npm install -g serverless`)
+- Serverless Framework v4 (`bun install -g serverless`)
 - Cuenta AWS y credenciales configuradas (`aws configure`)
 - PostgreSQL (local o en la nube)
 - bun (recomendado) o npm o pnpm
