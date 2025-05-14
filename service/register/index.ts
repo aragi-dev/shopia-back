@@ -1,10 +1,10 @@
 export { handler } from "./handler.js";
 
 const functionConfig = {
-  handler: "service/createUser/handler.handler",
+  handler: "service/register/handler.handler",
   timeout: 10,
-  name: "user-create",
-  awsName: "shopia-back-user-create",
+  name: "register",
+  awsName: "shopia-back-register",
   events: [
     {
       http: {

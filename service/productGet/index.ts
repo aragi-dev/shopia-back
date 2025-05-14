@@ -1,7 +1,7 @@
 export { handler } from "./handler.js";
 
 const functionConfig = {
-  handler: "service/getProductsById/handler.handler",
+  handler: "service/productGet/handler.handler",
   timeout: 10,
   name: "product-get",
   awsName: "shopia-back-product-get",

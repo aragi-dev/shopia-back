@@ -1,7 +1,7 @@
 export { handler } from "./handler.js";
 
 const functionConfig = {
-  handler: "service/auth/handler.handler",
+  handler: "service/login/handler.handler",
   timeout: 10,
   name: "login",
   awsName: "shopia-back-login",

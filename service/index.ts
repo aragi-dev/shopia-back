@@ -11,8 +11,8 @@ export interface Endpoint {
 
 export const services: Endpoint[] = [
   {
-    "name": "user-create",
-    "handler": "service/createUser/handler.handler",
+    "name": "register",
+    "handler": "service/register/handler.handler",
     "path": "/register",
     "method": "post",
     "cors": true,
@@ -20,31 +20,31 @@ export const services: Endpoint[] = [
   },
   {
     "name": "product-create",
-    "handler": "service/createProduct/handler.handler",
+    "handler": "service/productCreate/handler.handler",
     "path": "product",
     "method": "post",
     "cors": true,
     "timeout": 10
   },
   {
-    "name": "auth-login",
-    "handler": "service/auth/handler.handler",
+    "name": "login",
+    "handler": "service/login/handler.handler",
     "path": "/login",
     "method": "post",
     "cors": true,
     "timeout": 10
   },
   {
-    "name": "product-get-list",
-    "handler": "service/getProducts/handler.handler",
+    "name": "products-get",
+    "handler": "service/productsGet/handler.handler",
     "path": "product",
     "method": "get",
     "cors": true,
     "timeout": 10
   },
   {
-    "name": "product-get-by-id",
-    "handler": "service/getProductsById/handler.handler",
+    "name": "product-get",
+    "handler": "service/productGet/handler.handler",
     "path": "product/{id}",
     "method": "get",
     "cors": true,
