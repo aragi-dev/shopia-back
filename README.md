@@ -1,5 +1,5 @@
 
-#Este proyecto es desarrollado con la finalidad de  aprender a programar con el framework serverlesby lambdas
+#Este proyecto es desarrollado con la única finalidad de aplicar conocimetos aprendidos y tener evidencia de estos.
 
 # Shopia Backend - E-commerce API (Serverless)
 
