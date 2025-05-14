@@ -3,8 +3,8 @@ export { handler } from "./handler.js";
 const functionConfig = {
   handler: "service/auth/handler.handler",
   timeout: 10,
-  name: "auth-login",
-  awsName: "shopia-back-auth-login",
+  name: "login",
+  awsName: "shopia-back-login",
   events: [
     {
       http: {
