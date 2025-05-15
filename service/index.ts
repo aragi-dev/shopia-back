@@ -37,7 +37,7 @@ export const services: Endpoint[] = [
   {
     "name": "products-get",
     "handler": "service/productsGet/handler.handler",
-    "path": "product",
+    "path": "products",
     "method": "get",
     "cors": true,
     "timeout": 10

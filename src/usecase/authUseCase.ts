@@ -11,6 +11,7 @@ import bcrypt from "bcryptjs";
 import type { IAuthUseCaseResponse, IAuthUseCaseRequest } from "@/interfaces/IAuthUseCase";
 import { closeConnection, openConnection } from "@/utilities/shopiaDB";
 import User from "@/entitys/User";
+import ExpireTimeEnum from "@/utilities/enums/ExpireTimeEnum";
 
 const JWT_SECRET = process.env.JWT_SECRET || "secret";
 
@@ -39,7 +40,7 @@ export default class AuthUseCase implements IUseCase<IAuthUseCaseRequest, Respon
           data: undefined as unknown as IAuthUseCaseResponse,
         };
       }
-      const token = jwt.sign({ userId: user.id, role: user.role }, JWT_SECRET, { expiresIn: "1h" });
+      const token = jwt.sign({ userId: user.id, role: user.role }, JWT_SECRET, { expiresIn: ExpireTimeEnum.TWENTY_HOURS });
       return {
         statusCode: statusCodes.SUCCESS,
         message: messages.api.SUCCESS,

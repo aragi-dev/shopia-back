@@ -15,7 +15,7 @@ export default class GetCategoriesUseCase implements IUseCase<void, ResponseUseC
   async execute(): Promise<ResponseUseCase<Product[]>> {
     const db = await openConnection([Product]);
     try {
-      const categoryRepository = new ProductRepository(db.manager);
+      const categoryRepository = new ProductRepository(db.connection);
       const categories = await categoryRepository.findAll();
       return {
         statusCode: statusCodes.SUCCESS,
