@@ -28,8 +28,7 @@
     "@": "dist/src"
   },
   "scripts": {
-    "dev": "bun run generate-endpoints.ts && NODE_NO_WARNINGS=1 serverless offline",
-    "format": "bunx biome format . --write",
-    "lint": "bunx biome check ."
+    "dev": "TAGE=local bun run generate-endpoints.ts && NODE_NO_WARNINGS=1 serverless offline",
+    "prod": "STAGE=prod bunx serverless deploy --stage prod"
   }
 }
