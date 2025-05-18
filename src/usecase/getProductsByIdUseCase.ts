@@ -3,7 +3,7 @@ import Product from "@/entitys/Product";
 import ProductRepository from "@/repository/ProductRepository";
 import statusCodes from "@/utilities/statusCodes";
 import messages from "@/utilities/messages";
-import type ResponseUseCase from "@/utilities/responseUseCase";
+import type ResponseUseCase from "@/utilities/adapter/responseUseCase";
 import { openConnection, closeConnection } from "@/utilities/shopiaDB";
 import Logger from "@/utilities/logger/logger";
 import LogUseCase from "@/utilities/logger/useCaseDecorator";

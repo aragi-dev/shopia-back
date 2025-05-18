@@ -1,6 +1,6 @@
 import { injectable } from "inversify";
 import type IUseCase from "@/interfaces/IUseCase";
-import type ResponseUseCase from "@/utilities/responseUseCase";
+import type ResponseUseCase from "@/utilities/adapter/responseUseCase";
 import UserRepository from "@/repository/UserRepository";
 import statusCodes from "@/utilities/statusCodes";
 import messages from "@/utilities/messages";

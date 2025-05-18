@@ -12,8 +12,8 @@ import type Product from "@/entitys/Product";
 import schema from "./schema";
 import statusCodes from "@/utilities/statusCodes";
 import messages from "@/utilities/messages";
-import type ResponseUseCase from "@/utilities/responseUseCase";
-import response from "@/utilities/responseFormatter";
+import type ResponseUseCase from "@/utilities/adapter/responseUseCase";
+import response from "@/utilities/adapter/responseHandler";
 import Logger from "@/utilities/logger/logger";
 
 const baseHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {

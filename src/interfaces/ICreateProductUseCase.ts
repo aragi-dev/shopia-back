@@ -3,6 +3,6 @@ export default interface ICreateProductUseCase {
   name: string;
   description?: string;
   price: number;
-  purchase_price: number;
+  cost: number;
   stock: number;
 }

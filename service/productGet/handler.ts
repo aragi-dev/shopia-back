@@ -7,11 +7,11 @@ import container from "./inversify.config";
 import type Product from "@/entitys/Product";
 import statusCodes from "@/utilities/statusCodes";
 import messages from "@/utilities/messages";
-import response from "@/utilities/responseFormatter";
+import response from "@/utilities/adapter/responseHandler";
 import Logger from "@/utilities/logger/logger";
 import GetProductsByIdUseCase from "@/usecase/getProductsByIdUseCase";
 import type IUseCase from "@/interfaces/IUseCase";
-import type ResponseUseCase from "@/utilities/responseUseCase";
+import type ResponseUseCase from "@/utilities/adapter/responseUseCase";
 import type IGetProductUseCase from "@/interfaces/IGetProductUseCase";
 import schema from "./schema";
 

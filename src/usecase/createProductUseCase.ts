@@ -4,7 +4,7 @@ import type IUseCase from "@/interfaces/IUseCase";
 import ProductRepository from "@/repository/ProductRepository";
 import statusCodes from "@/utilities/statusCodes";
 import messages from "@/utilities/messages";
-import type ResponseUseCase from "@/utilities/responseUseCase";
+import type ResponseUseCase from "@/utilities/adapter/responseUseCase";
 import { openConnection, closeConnection } from "@/utilities/shopiaDB";
 import Logger from "@/utilities/logger/logger";
 import LogUseCase from "@/utilities/logger/useCaseDecorator";
@@ -18,7 +18,7 @@ export default class CreateProductUseCase implements IUseCase<ICreateProductUseC
     try {
       const productRepository = new ProductRepository(db.connection);
       const existing = await productRepository.findByParam({
-        name: data.name,
+        code: data.code,
         status: true,
       });
       if (existing.length > 0) {
