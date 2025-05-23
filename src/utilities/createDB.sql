@@ -22,7 +22,7 @@ CREATE TABLE product (
     code VARCHAR(50) NOT NULL UNIQUE,                                         -- Código del producto
     name VARCHAR(255) NOT NULL,                                               -- Nombre del producto
     description TEXT,                                                         -- Descripción del producto
-    purchase_price NUMERIC(10,2) NOT NULL,                                    -- Precio de compra (coste)
+    cost NUMERIC(10,2) NOT NULL,                                              -- Precio de compra (coste)
     price NUMERIC(10,2) NOT NULL,                                             -- Precio unitario
     stock INTEGER NOT NULL,                                                   -- Cantidad en inventario
     status BOOLEAN NOT NULL DEFAULT TRUE,                                     -- Estatus activo o inactivo
